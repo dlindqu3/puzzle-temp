@@ -1,10 +1,12 @@
 import React, { useState } from "react"; 
 
-function SixteenBase() {
+function SixteenBase( ) {
 
-  let [nums, setNums] = useState([1,2,3,null,5,6,4,7,8,9,10,11,12,13,14,15]); 
+  let [nums, setNums] = useState([1,2,3,4,5,6,7,8,null,10,11,12,9,13,14,15]); 
   let [count, setCount] = useState(0); 
+  // const [won, setWon] = useState(false); 
 
+  
   // 1 2 3 4 
   // 5 6 7 8
   // 9 10 11 12 
@@ -12,7 +14,7 @@ function SixteenBase() {
 
 
   let testWinCondition = () => {
-    let winConditionArr = [1,2,3,5,6,4,7,8,9,10,11,12,13,14,15];
+    let winConditionArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
     let numsCopy = nums;
     let temp = [];
     numsCopy.forEach((item) =>{
@@ -25,7 +27,7 @@ function SixteenBase() {
         console.log('keep playing');
         return; 
       }
-      console.log('you win')
+      console.log('you win'); 
     }
   }
 
@@ -104,7 +106,7 @@ function SixteenBase() {
         }
       })}
       <br /> 
-      {nums.slice(9,13).map((item) => {
+      {nums.slice(8,12).map((item) => {
         if (item == null){
           return <span > NULL </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
@@ -117,7 +119,7 @@ function SixteenBase() {
         }
       })}
       <br />
-      {nums.slice(13,17).map((item) => {
+      {nums.slice(12,16).map((item) => {
         if (item == null){
           return <span > NULL </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
