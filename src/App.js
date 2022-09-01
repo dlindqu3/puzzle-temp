@@ -1,11 +1,11 @@
 import React from "react";
-import NineBase from "./components/NineBase";
+import SixteenBase from "./components/SixteenBase";
 
 function App() {
   return (
     <div className="App">
       <>
-        <NineBase />
+        <SixteenBase />
         <p>Hello</p>
         <p>Cool game</p>
       </>

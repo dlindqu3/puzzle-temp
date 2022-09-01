@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState } from "react"; 
 
-function NineBase() {
+function SixteenBase() {
 
-  let [nums, setNums] = useState([1,2,3,null,5,6,4,7,8]); 
+  let [nums, setNums] = useState([1,2,3,null,5,6,4,7,8,9,10,11,12,13,14,15]); 
   let [count, setCount] = useState(0); 
 
-  // 0 1 2 
-  // 3 4 5 
-  // 6 7 8 
+  // 1 2 3 4 
+  // 5 6 7 8
+  // 9 10 11 12 
+  // 13 14 15
 
-  // Warning: State updates from the useState() and useReducer() Hooks don't support the second callback argument. To execute a side effect after rendering, declare it in the component body with useEffect().
 
   let testWinCondition = () => {
-    let winConditionArr = [1,2,3,4,5,6,7,8];
+    let winConditionArr = [1,2,3,5,6,4,7,8,9,10,11,12,13,14,15];
     let numsCopy = nums;
     let temp = [];
     numsCopy.forEach((item) =>{
@@ -20,7 +20,6 @@ function NineBase() {
         temp.push(item);
       }
     }); 
-    let equal = false; 
     for (let i = 0; i < winConditionArr.length; i++){
       if(winConditionArr[i] !== temp[i]){
         console.log('keep playing');
@@ -29,10 +28,6 @@ function NineBase() {
       console.log('you win')
     }
   }
-
-  // useEffect(() => {
-  //   testWinCondition();
-  // }, [nums, testWinCondition]);
 
   let switchIndeces = (clickedVal) => {
     let clickedValNum = parseInt(clickedVal); 
@@ -52,13 +47,15 @@ function NineBase() {
 
   let checkSameRow = (targetIdx) => {
     let nullIndex = nums.indexOf(null);
-    if ((0 <= targetIdx && targetIdx <= 2) && (0 <= nullIndex && nullIndex <= 2)){ 
+    if ((0 <= targetIdx && targetIdx <= 3) && (0 <= nullIndex && nullIndex <= 3)){ 
       return true; 
-    } else if ((3 <= targetIdx && targetIdx <= 5) && (3 <= nullIndex && nullIndex <= 5)) {
+    } else if ((4 <= targetIdx && targetIdx <= 7) && (4 <= nullIndex && nullIndex <= 7)) {
       return true; 
-    } else if ((6 <= targetIdx && targetIdx <= 8) && (6 <= nullIndex && nullIndex <= 8)){
+    } else if ((8 <= targetIdx && targetIdx <= 11) && (8 <= nullIndex && nullIndex <= 11)){
       return true; 
-    }
+    } else if ((12 <= targetIdx && targetIdx <= 15) && (12 <= nullIndex && nullIndex <= 15)){
+      return true; 
+    } 
     return false;
   }
 
@@ -69,9 +66,9 @@ function NineBase() {
       return true; 
     } else if ((nullIndex === (targetIdx + 1)) && sameRow) {
       return true; 
-    } else if  (nullIndex === targetIdx - 3) {
+    } else if  (nullIndex === targetIdx - 4) {
       return true; 
-    } else if  (nullIndex === targetIdx + 3) {
+    } else if  (nullIndex === targetIdx + 4) {
       return true; 
     } else {
       return false; 
@@ -80,8 +77,8 @@ function NineBase() {
 
   return (
     <div>
-      <p>NineBase here</p>
-      {nums.slice(0,3).map((item) => {
+      <p>SixteenBase here</p>
+      {nums.slice(0,4).map((item) => {
         if (item == null){
           return <span >   NULL   </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
@@ -94,7 +91,7 @@ function NineBase() {
         }
       })}
       <br />
-       {nums.slice(3,6).map((item) => {
+       {nums.slice(4,8).map((item) => {
         if (item == null){
           return <span > NULL </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
@@ -107,7 +104,7 @@ function NineBase() {
         }
       })}
       <br /> 
-      {nums.slice(6,9).map((item) => {
+      {nums.slice(9,13).map((item) => {
         if (item == null){
           return <span > NULL </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
@@ -120,10 +117,22 @@ function NineBase() {
         }
       })}
       <br />
+      {nums.slice(13,17).map((item) => {
+        if (item == null){
+          return <span > NULL </span>
+        } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
+          return <span><button value={item} onClick={(e) => {
+            e.preventDefault();
+            switchIndeces(e.currentTarget.value);
+          }} ><b> { item } </b> </button></span>
+        } else {
+          return <span > {item} </span>
+        }
+      })}
       <br />
       {/* <p>count: {count}</p> */}
     </div>
   )
 }
 
-export default NineBase
+export default SixteenBase
