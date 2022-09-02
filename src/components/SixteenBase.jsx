@@ -2,16 +2,42 @@ import React, { useState } from "react";
 
 function SixteenBase( ) {
 
-  let [nums, setNums] = useState([1,2,3,4,5,6,7,8,null,10,11,12,9,13,14,15]); 
+  let shuffle = () => {
+    let numsInput = [null,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+    for (let i = numsInput.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = numsInput[i];
+      numsInput[i] = numsInput[j];
+      numsInput[j] = temp;
+    }
+    return numsInput; 
+  }
+
+  let [nums, setNums] = useState(shuffle()); 
   let [count, setCount] = useState(0); 
   // const [won, setWon] = useState(false); 
 
-  
-  // 1 2 3 4 
+    // 1 2 3 4 
   // 5 6 7 8
   // 9 10 11 12 
   // 13 14 15
 
+
+  // let shuffle = () => {
+  //   let currentNums = nums
+  //   for (let i = currentNums.length - 1; i > 0; i--) {
+  //     let j = Math.floor(Math.random() * (i + 1));
+  //     let temp = currentNums[i];
+  //     currentNums[i] = currentNums[j];
+  //     currentNums[j] = temp;
+  //   }
+  //   setNums(currentNums); 
+  // }
+
+  // useEffect(() => {
+
+  // }, []);
+      
 
   let testWinCondition = () => {
     let winConditionArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
