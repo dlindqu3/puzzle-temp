@@ -108,7 +108,7 @@ function SixteenBase( ) {
       <p>SixteenBase here</p>
       {nums.slice(0,4).map((item) => {
         if (item == null){
-          return <span >   NULL   </span>
+          return <span >   X   </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
           return <span><button value={item} onClick={(e) => {
             e.preventDefault();
@@ -121,7 +121,7 @@ function SixteenBase( ) {
       <br />
        {nums.slice(4,8).map((item) => {
         if (item == null){
-          return <span > NULL </span>
+          return <span > X </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
           return <span><button value={item} onClick={(e) => {
             e.preventDefault();
@@ -134,7 +134,7 @@ function SixteenBase( ) {
       <br /> 
       {nums.slice(8,12).map((item) => {
         if (item == null){
-          return <span > NULL </span>
+          return <span > X </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
           return <span><button value={item} onClick={(e) => {
             e.preventDefault();
@@ -147,7 +147,7 @@ function SixteenBase( ) {
       <br />
       {nums.slice(12,16).map((item) => {
         if (item == null){
-          return <span > NULL </span>
+          return <span > X </span>
         } else if (checkNullNeighbor(nums.indexOf(item)) === true) {
           return <span><button value={item} onClick={(e) => {
             e.preventDefault();
